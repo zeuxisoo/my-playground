@@ -1,0 +1,18 @@
+{
+    "name": "zeuxisoo/php-string-scanner",
+    "type": "library",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zeuxisoo\\StrScan\\": "src/Zeuxisoo/StrScan"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zeuxisoo\\StrScan\\Tests\\": "tests/"
+        }
+    }
+}
