@@ -112,7 +112,7 @@ fn (mut vm VM) add_locals(name string, object Object) {
 fn (mut vm VM) run(bytecode Bytecode) {
 	mut i := 0
 
-	hh: for i < bytecode.instructions.len {
+	for i < bytecode.instructions.len {
 		instruction := bytecode.instructions[i]
 
 		match instruction.opcode {
