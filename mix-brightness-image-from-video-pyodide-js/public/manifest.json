@@ -1,0 +1,28 @@
+{
+    "name": "Maxone",
+    "short_name": "Maxone",
+    "descriptions": "Mix highest brightness image",
+    "theme_color": "#fefdfe",
+    "background_color": "#d9d9d9",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "./assets/icons/icon-48.png",
+            "size": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/icons/icon-96.png",
+            "size": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/icons/icon-512.png",
+            "size": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

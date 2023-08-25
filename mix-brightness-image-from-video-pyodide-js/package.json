@@ -1,0 +1,25 @@
+{
+  "name": "maxone",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "svelte": "^3.55.1",
+    "vite": "^4.1.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^2.52.0",
+    "date-fns": "^2.30.0",
+    "lucide-svelte": "^0.224.0",
+    "pyodide": "^0.23.2",
+    "tailwindcss": "^3.3.2",
+    "theme-change": "^2.5.0"
+  }
+}
