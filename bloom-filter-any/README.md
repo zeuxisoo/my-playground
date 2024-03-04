@@ -20,3 +20,13 @@ Run the code
 ```
 php main.php
 ```
+
+### Node.js
+
+> version: v16.14.2
+
+Run the code
+
+```
+node main.js
+```
