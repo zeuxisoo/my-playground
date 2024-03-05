@@ -30,3 +30,13 @@ Run the code
 ```
 node main.js
 ```
+
+### Ruby
+
+> version: 3.2.0
+
+Run the code
+
+```
+ruby main.rb
+```
