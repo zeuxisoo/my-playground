@@ -11,6 +11,16 @@ cd ./gleam
 gleam run
 ```
 
+### Perl
+
+> version: v5.38.2
+
+Run the code
+
+```
+perl main.pl
+```
+
 ### PHP
 
 > version: v8.3.2
