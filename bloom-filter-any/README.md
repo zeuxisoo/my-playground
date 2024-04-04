@@ -43,10 +43,20 @@ node main.js
 
 ### Ruby
 
-> version: 3.2.0
+> version: v3.2.0
 
 Run the code
 
 ```
 ruby main.rb
+```
+
+### Vlang
+
+> version: v0.4.5 dbdbfe2
+
+Run the code
+
+```
+v run main.v
 ```
