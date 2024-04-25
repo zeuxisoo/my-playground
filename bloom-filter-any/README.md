@@ -60,3 +60,13 @@ Run the code
 ```
 v run main.v
 ```
+
+### Go
+
+> version: v1.21.6
+
+Run the code
+
+```
+go run main.go
+```
