@@ -31,6 +31,16 @@ Run the code
 go run main.go
 ```
 
+### Java
+
+> version: openjdk 16.0.1
+
+Run the code
+
+```
+javac Main.java && java Main
+```
+
 ### Perl
 
 > version: v5.38.2
