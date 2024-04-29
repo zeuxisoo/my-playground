@@ -11,6 +11,26 @@ cd ./gleam
 gleam run
 ```
 
+### V
+
+> version: v0.4.5 dbdbfe2
+
+Run the code
+
+```
+v run main.v
+```
+
+### Go
+
+> version: v1.21.6
+
+Run the code
+
+```
+go run main.go
+```
+
 ### Perl
 
 > version: v5.38.2
@@ -31,16 +51,6 @@ Run the code
 php main.php
 ```
 
-### Node.js
-
-> version: v16.14.2
-
-Run the code
-
-```
-node main.js
-```
-
 ### Ruby
 
 > version: v3.2.0
@@ -51,22 +61,12 @@ Run the code
 ruby main.rb
 ```
 
-### Vlang
+### Node.js
 
-> version: v0.4.5 dbdbfe2
-
-Run the code
-
-```
-v run main.v
-```
-
-### Go
-
-> version: v1.21.6
+> version: v16.14.2
 
 Run the code
 
 ```
-go run main.go
+node main.js
 ```
