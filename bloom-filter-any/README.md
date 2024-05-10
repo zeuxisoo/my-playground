@@ -11,6 +11,18 @@ cd ./gleam
 gleam run
 ```
 
+### Dart
+
+> version: v3.2.4
+
+Run the code
+
+```
+cd ./dart
+dart pub add crypto
+dart run main.dart
+```
+
 ### V
 
 > version: v0.4.5 dbdbfe2

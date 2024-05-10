@@ -1,0 +1,14 @@
+name: dart
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.1.0-edge.0abd362a3eb8af083f5512a7d3f13ccf6bc06644
+
+# Add regular dependencies here.
+dependencies:
+  crypto: ^3.0.3
+  # path: ^1.8.0
+
+dev_dependencies:
