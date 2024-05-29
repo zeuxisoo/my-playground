@@ -25,7 +25,7 @@ dart run main.dart
 
 ### V
 
-> version: v0.4.5 dbdbfe2
+> version: v0.4.5 (dbdbfe2)
 
 Run the code
 
@@ -45,12 +45,22 @@ go run main.go
 
 ### Java
 
-> version: openjdk 16.0.1
+> version: v16.0.1 (openjdk)
 
 Run the code
 
 ```
 javac Main.java && java Main
+```
+
+### Elixir
+
+> version: v1.16.2 (compiled with Erlang/OTP 26)
+
+Run the code
+
+```
+elixir main.ex
 ```
 
 ### Perl
