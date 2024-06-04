@@ -11,3 +11,8 @@ fn square(i int) int {
 fn sqrt_of_sum_of_squares(x f64, y f64) f64 {
 	return math.sqrt(x * x + y * y)
 }
+
+@[export: 'process_v_string']
+fn work(s string) string {
+    return 'v ${s} v'
+}
