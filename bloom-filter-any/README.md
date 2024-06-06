@@ -63,6 +63,16 @@ Run the code
 elixir main.ex
 ```
 
+### Crystal
+
+> version: v1.12.1 (2024-04-11, LLVM: 18.1.4)
+
+Run the code
+
+```
+crystal main.cr
+```
+
 ### Perl
 
 > version: v5.38.2
