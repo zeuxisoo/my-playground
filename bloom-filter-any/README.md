@@ -23,6 +23,18 @@ dart pub add crypto
 dart run main.dart
 ```
 
+
+### Swift
+
+> version: v5.6.1
+
+Run the code
+
+```
+cd ./swift
+swift run --skip-build
+```
+
 ### V
 
 > version: v0.4.5 (dbdbfe2)
