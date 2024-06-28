@@ -23,7 +23,6 @@ dart pub add crypto
 dart run main.dart
 ```
 
-
 ### Swift
 
 > version: v5.6.1
@@ -33,6 +32,17 @@ Run the code
 ```
 cd ./swift
 swift run --skip-build
+```
+
+### Nim
+
+> version: v2.0.2
+
+Run the code
+
+```
+cd ./nim
+nim c -r --verbosity:0 src/main.nim
 ```
 
 ### V
