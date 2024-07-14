@@ -95,6 +95,16 @@ Run the code
 crystal main.cr
 ```
 
+### Julia
+
+> version: v1.10.3
+
+Run the code
+
+```
+julia main.jl
+```
+
 ### Perl
 
 > version: v5.38.2
