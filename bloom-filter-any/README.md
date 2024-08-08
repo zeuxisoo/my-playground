@@ -65,6 +65,17 @@ Run the code
 go run main.go
 ```
 
+### Rust
+
+> version: v1.78.0
+
+Run the code
+
+```
+cd ./rust
+cargo run --quiet
+```
+
 ### Java
 
 > version: v16.0.1 (openjdk)
