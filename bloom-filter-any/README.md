@@ -136,6 +136,16 @@ Run the code
 php main.php
 ```
 
+### Python
+
+> version: v3.12.1
+
+Run the code
+
+```
+python main.py
+```
+
 ### Ruby
 
 > version: v3.2.0
