@@ -19,3 +19,14 @@ Run the code
 ```
 go run main.go
 ```
+
+### Python
+
+> version: v3.12.1
+
+Run the code
+
+```
+cd python
+python main1.py
+```
