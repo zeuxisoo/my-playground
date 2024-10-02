@@ -30,4 +30,5 @@ Run the code
 cd python
 python main1.py
 python main2.py
+python main3.py
 ```
