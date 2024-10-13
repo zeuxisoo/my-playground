@@ -76,6 +76,17 @@ cd ./rust
 cargo run --quiet
 ```
 
+### Zig
+
+> version: 0.12.0
+
+Run the code
+
+```
+cd ./zig
+zig run src/main.zig
+```
+
 ### Java
 
 > version: v16.0.1 (openjdk)
