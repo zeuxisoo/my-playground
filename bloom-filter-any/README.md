@@ -85,6 +85,7 @@ Run the code
 ```
 cd ./zig
 zig run src/main.zig
+zig run src/other.zig
 ```
 
 ### Java
