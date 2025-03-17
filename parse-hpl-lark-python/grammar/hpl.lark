@@ -1,0 +1,69 @@
+// terminal (filter out/no show in output)
+_BLANK_LINE: /[ \t]*[\r\n]/
+
+// terminal
+L_PAREN: "("
+R_PAREN: ")"
+SLASH: "/"
+DOT: "."
+SPACE: " "
+
+ASTERISK4: /[*]{4,}/
+
+PAIR_COLON_KEY: UCASE_LETTER (LETTER | NUMBER | SPACE | L_PAREN | R_PAREN | SLASH | DOT)*
+PAIR_COLON_VALUE: /(?<=\:\s)[a-zA-Z0-9() \:\\_\.\/\+\-]+/
+
+PAIR_EQUALS_KEY: /[a-zA-Z() ]+(?=\s\=)/
+PAIR_EQUALS_VALUE: /(?<=\=\s)[a-zA-Z0-9() \+\*\.]+/
+
+DATA_PAIR_KEY: "Data line" " " NUMBER
+DATA_ITEM_FLOAT: "f" NUMBER
+DATA_ITEM_INTEGER: "i" NUMBER
+DATA_ITEM_EXPONENT: "e" NUMBER
+DATA_ITEM_SUFFIX_X: NUMBER "x"
+
+// program: start
+start: _BLANK_LINE* (statement _NEWLINE+)*
+
+// program: statement
+statement: data_line_statement
+    | expression_statement
+
+data_line_statement: data_key ":" " "? data_value data_items
+
+expression_statement:
+    | pair_colon
+    | pair_equals
+    | asterisks
+    | number_row
+
+// program: expression
+pair_colon: key ":" value
+pair_equals: key "=" value
+
+key: PAIR_COLON_KEY | PAIR_EQUALS_KEY
+value: PAIR_COLON_VALUE | PAIR_EQUALS_VALUE
+
+data_key: DATA_PAIR_KEY
+data_value: PAIR_COLON_VALUE
+data_items: data_item ("," data_item)*
+data_item: DATA_ITEM_FLOAT
+    | DATA_ITEM_INTEGER
+    | DATA_ITEM_EXPONENT
+    | DATA_ITEM_SUFFIX_X
+
+asterisks: ASTERISK4
+
+number_row: SIGNED_NUMBER (" " SIGNED_NUMBER)*
+
+// import
+%import common.NEWLINE -> _NEWLINE
+%import common.WS -> _WS
+%import common.UCASE_LETTER
+%import common.LETTER
+%import common.WORD
+%import common.NUMBER
+%import common.SIGNED_NUMBER
+
+// ignore
+%ignore _WS

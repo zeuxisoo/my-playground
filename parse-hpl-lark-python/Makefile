@@ -1,0 +1,20 @@
+all:
+	@echo
+	@echo "Command        : Description"
+	@echo "-------------- : -----------"
+	@echo "make venv      : create virtual environment"
+	@echo "make vendor    : install the application dependencies"
+	@echo "make benchmark : run the benchmark"
+	@echo
+
+venv:
+	python3 -m venv venv
+
+vendor:
+	source venv/bin/activate && pip install -r requirements.txt
+
+benchmark:
+	@echo
+	@hyperfine \
+		--warmup 9 --runs 10 \
+		-n "walk 1" "./venv/bin/python3 main.py"

@@ -1,0 +1,29 @@
+Filename: C:\Lidar\Data\Profiler\2011\201101\20110108\ScanFile20_20110108_160345.hpl
+System ID: 20
+Number of gates: 60
+Range gate length (m): 30.0
+Gate length (pts): 10
+Pulses/ray: 15000
+No. of rays in file: 12
+Scan type: ScanFile
+Focus range: 0
+Start time: 20110108 16:03:51.00
+Resolution (m/s): 0.0190
+Altitude of measurement (center of gate) = (range gate + 0.5) * Gate length
+Data line 1: Decimal time (hours) Azimuth (degrees) Elevation (degrees) Pitch (degrees) Roll (Degrees)
+f9.6,1x,f6.2,1x,f6.2,f6.2,f6.2
+Data line 2: Range Gate Doppler (m/s) Intensity (SNR + 1) Beta (m-1 sr-1)
+i3,1x,f6.4,1x,f8.6,1x,e12.6
+****
+16.064167 0.00 0.00 -0.62 0.31
+ 0 -4.8061 0.998756 -2.199013E-8
+ 1 2.5627 0.775683 -3.967805E-6
+ 2 -0.4190 1.069723 1.234737E-6
+ 3 -0.3810 1.079519 1.410864E-6
+ 4 -0.3810 1.075004 1.334181E-6
+ 5 -0.3810 1.078009 1.392155E-6
+ 6 -0.4000 1.074187 1.329193E-6
+ 7 -0.4000 1.073827 1.328886E-6
+ 8 -0.4000 1.080016 1.447931E-6
+ 9 -0.3620 1.078926 1.436752E-6
+ 10 -0.4190 1.077470 1.419610E-6
