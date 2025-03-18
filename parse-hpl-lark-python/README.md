@@ -23,10 +23,11 @@ python3 main.py --parse
 python3 main.py --pretty
 ```
 
-Show the walked result
+Show the walked result or base on selected walker
 
 ```
 python3 main.py
+python3 main.py --walker=[1-2]
 ```
 
 Run the benchmark

@@ -5,10 +5,11 @@ from enum import Enum
 from pprint import pprint
 from lark import Lark
 
-from walker import walk_tree_handcraft
+from walker import walk_tree_handcraft, walk_tree_visitor
 
 class Walker(Enum):
     HANDCRAFT = 1
+    VISITOR = 2
 
 def read_content(file_path) -> str:
     with open(file_path, 'r') as f:
@@ -25,8 +26,11 @@ def walk_tree(grammar: str, data: str, walker: Walker) -> None:
     tree = parser.parse(data)
     env = dict()
 
+    # match statement may better but version limited
     if walker == Walker.HANDCRAFT.value:
         env = walk_tree_handcraft(tree)
+    elif walker == Walker.VISITOR.value:
+        env = walk_tree_visitor(tree)
     else:
         raise ValueError('Unknown convert tree walker')
 
