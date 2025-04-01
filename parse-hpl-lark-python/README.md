@@ -27,7 +27,7 @@ Show the walked result or base on selected walker
 
 ```
 python3 main.py
-python3 main.py --walker=[1-3]
+python3 main.py --walker=[1-4]
 ```
 
 Run the benchmark

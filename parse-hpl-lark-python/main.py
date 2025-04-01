@@ -5,12 +5,13 @@ from enum import Enum
 from pprint import pprint
 from lark import Lark
 
-from walker import walk_tree_handcraft, walk_tree_visitor, walk_tree_interpreter
+from walker import walk_tree_handcraft, walk_tree_visitor, walk_tree_interpreter, walk_tree_transformer
 
 class Walker(Enum):
     HANDCRAFT = 1
     VISITOR = 2
     INTERPRETER = 3
+    TRANSFORMER = 4
 
 def read_content(file_path) -> str:
     with open(file_path, 'r') as f:
@@ -34,6 +35,8 @@ def walk_tree(grammar: str, data: str, walker: Walker) -> None:
         env = walk_tree_visitor(tree)
     elif walker == Walker.INTERPRETER.value:
         env = walk_tree_interpreter(tree)
+    elif walker == Walker.TRANSFORMER.value:
+        env = walk_tree_transformer(tree)
     else:
         raise ValueError('Unknown convert tree walker')
 

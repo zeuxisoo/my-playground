@@ -19,4 +19,5 @@ benchmark:
 		--warmup 9 --runs 10 \
 		-n "walk 1" "./venv/bin/python3 main.py --walker=1" \
 		-n "walk 2" "./venv/bin/python3 main.py --walker=2" \
-		-n "walk 3" "./venv/bin/python3 main.py --walker=3"
+		-n "walk 3" "./venv/bin/python3 main.py --walker=3" \
+		-n "walk 4" "./venv/bin/python3 main.py --walker=4"
