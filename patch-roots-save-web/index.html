@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="robots" content="noindex, nofollow, noai">
+<title>Patch Roots Save</title>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+@theme {
+    --breakpoint-xxs: 20rem;
+}
+</style>
+</head>
+<body>
+<div class="max-w-[100vw] m-5">
+    <h1 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900">
+        Max Inventory
+    </h1>
+    <div class="divider"></div>
+
+    <input type="file" id="input-file" class="file-input w-full" />
+    <div id="message" class="alert alert-info alert-soft mt-3">
+        Please choose save file first!
+    </div>
+    <div class="divider"></div>
+
+    <button type="button" id="button-patch" class="btn btn-soft btn-primary">Patch</button>
+    <button type="button" id="button-download" class="btn btn-soft btn-accent">Download</button>
+    <div class="divider"></div>
+
+    <ul class="list text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
+        <li class="grid grid-cols-1 lg:grid-cols-11 gap-1 p-[1rem]">
+            <div class="grid-span-1 lg:col-span-1 badge badge-outline badge-primary">macOS</div>
+            <div class="grid-span-1 lg:col-span-10 pl-1">$HOME/Library/Application Support/Soda Den/Roots of Pacha/saves/[USER_ID]</div>
+        </li>
+        <li class="grid grid-cols-11 max-lg:grid-cols-1 gap-1 p-[1rem]">
+            <span class="col-span-1 max-lg:grid-span-1 badge badge-outline badge-primary">Windows</span>
+            <div class="col-span-10 max-lg:grid-span-1 pl-1 break-all">%USERPROFILE%\AppData\LocalLow\Soda Den\Roots of Pacha\saves\[USER_ID]</div>
+        </li>
+        <li class="grid grid-cols-11 xxs:max-lg:grid-cols-1 gap-1 p-[1rem]">
+            <span class="col-span-1 xxs:max-lg:grid-span-1 badge badge-outline badge-primary">Linux</span>
+            <div class="col-span-10 xxs:max-lg:grid-span-1 pl-1 break-all">???</div>
+        </li>
+    </ul>
+    <div class="divider"></div>
+
+    <label class="block mb-2 text-md font-medium text-gray-900">File content:</label>
+    <pre id="file-content" class="p-2 border border-gray-300 text-gray-500 rounded-lg h-80 overflow-x-auto whitespace-pre-line">Wait for load</pre>
+</div>
+<script type="text/javascript">
+const input_file = document.getElementById('input-file');
+const message = document.getElementById('message');
+const file_content = document.getElementById('file-content');
+
+const button_patch = document.getElementById('button-patch');
+const button_download = document.getElementById('button-download');
+
+input_file.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    message.textContent = "";
+    file_content.textContent = "";
+
+    if (!file) {
+        showMessage('Please select save file first');
+        return;
+    }
+
+    if (file.type !== 'application/json') {
+        showMessage('Save file is not json format');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function() {
+        file_content.textContent = reader.result;
+        showMessage("Save loaded! You can path now!");
+    }
+    reader.onerror = function() {
+        showMessage("Cannot read the save file");
+    }
+    reader.readAsText(file);
+});
+
+button_patch.addEventListener('click', function(event) {
+    const content = file_content.textContent;
+
+    if (!content) {
+        showMessage("Save content is empty");
+        return;
+    }
+
+    try {
+        const save_object = JSON.parse(content);
+        const entities = save_object.Entities;
+
+        //
+        const entity_player = entities.find(function(entity) {
+            return entity.Type == 4;
+        });
+
+        if (!entity_player) {
+            showMessage('Cannot found player entity');
+            return;
+        }
+
+        //
+        const inventory_id = entity_player.InventoryId;
+        const entity_inventory = entities.find(function(entity) {
+            // Inventory: 5
+            return entity.Type == 5 && entity.ID == inventory_id;
+        });
+
+        if (!entity_inventory) {
+            showMessage('Cannot found player inventory entity');
+            return;
+        }
+
+        //
+        const regular_slots = entity_inventory.RegularSlots;
+        for(const slots of regular_slots) {
+            if (slots.hasOwnProperty('ItemWithProperties')) {
+                slots.ItemWithProperties.Quality = 3; // [Normal, Good, Better, Best]
+                slots.SyncedQ = 255;                  // Quantity
+            }
+        }
+
+        // console.log(regular_slots);
+        // console.log(entity_inventory);
+        // console.log(entities);
+
+        file_content.textContent = JSON.stringify(save_object);
+
+        showMessage("Save patched! You can download now!");
+    }catch(e) {
+        showMessage("Cannot parse save file");
+        console.log(e);
+        return;
+    }
+});
+
+button_download.addEventListener('click', function(event) {
+    showMessage('Try to create patched save file');
+
+    const blob = new Blob([file_content.textContent], {type: "application/json"});
+    const object_url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.download = "patched-save.json";
+    a.href = object_url;
+    a.textContent = "Download patched save";
+    a.click();
+
+    showMessage('Try to ask for download patched save file');
+    showMessage("Download started! Please download and replace it!");
+});
+
+function showMessage(text) {
+    message.textContent = text;
+}
+</script>
+</body>
+</html>
