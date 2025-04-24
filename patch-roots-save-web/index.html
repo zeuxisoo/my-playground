@@ -10,6 +10,7 @@
 <style type="text/tailwindcss">
 @theme {
     --breakpoint-xxs: 20rem;
+    /* --breakpoint-xs : 23.75rem; */
 }
 </style>
 </head>
@@ -26,8 +27,21 @@
     </div>
     <div class="divider"></div>
 
-    <button type="button" id="button-patch" class="btn btn-soft btn-primary">Patch</button>
-    <button type="button" id="button-download" class="btn btn-soft btn-accent">Download</button>
+    <div class="grid grid-col-1 sm:grid-cols-4 gap-1">
+        <label class="input w-full">
+            Amount
+            <input type="number" id="item-amount" class="grow" placeholder="Please enter quality number" value="255" min="1" max="255" title="Must be between be 1 to 10" required />
+        </label>
+        <select class="select w-full" id="item-quality">
+            <option disabled>Quality</option>
+            <option value="0">Normal</option>
+            <option value="1">Good</option>
+            <option value="2">Better</option>
+            <option value="3" selected>Best</option>
+        </select>
+        <button type="button" id="button-patch" class="btn btn-soft btn-primary">Patch</button>
+        <button type="button" id="button-download" class="btn btn-soft btn-accent">Download</button>
+    </div>
     <div class="divider"></div>
 
     <ul class="list text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
@@ -47,12 +61,15 @@
     <div class="divider"></div>
 
     <label class="block mb-2 text-md font-medium text-gray-900">File content:</label>
-    <pre id="file-content" class="p-2 border border-gray-300 text-gray-500 rounded-lg h-80 overflow-x-auto whitespace-pre-line">Wait for load</pre>
+    <textarea id="file-content" class="textarea w-full border border-gray-300 text-gray-500 rounded-lg h-80" placeholder="Wait for load"></textarea>
 </div>
 <script type="text/javascript">
 const input_file = document.getElementById('input-file');
 const message = document.getElementById('message');
 const file_content = document.getElementById('file-content');
+
+const item_amount = document.getElementById('item-amount');
+const item_quality = document.getElementById('item-quality');
 
 const button_patch = document.getElementById('button-patch');
 const button_download = document.getElementById('button-download');
@@ -118,11 +135,13 @@ button_patch.addEventListener('click', function(event) {
         }
 
         //
+        const amount = item_amount.value;
+        const quality = item_quality.value;
         const regular_slots = entity_inventory.RegularSlots;
         for(const slots of regular_slots) {
             if (slots.hasOwnProperty('ItemWithProperties')) {
-                slots.ItemWithProperties.Quality = 3; // [Normal, Good, Better, Best]
-                slots.SyncedQ = 255;                  // Quantity
+                slots.ItemWithProperties.Quality = amount; // [Normal, Good, Better, Best]
+                slots.SyncedQ = quality;                   // Quantity
             }
         }
 
