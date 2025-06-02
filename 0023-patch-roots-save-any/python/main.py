@@ -1,15 +1,10 @@
 #!/usr/bin/env python
 
-from datetime import datetime, timedelta
-from enum import Enum
+import argparse
 import json
 import os
-import argparse
-
-Quality = Enum('Quality', [
-    ('Normal', 0), ('Good', 1),
-    ('Better', 2), ('Best', 3),
-])
+from datetime import datetime, timedelta
+from kind import Quality
 
 def get_latest_save_file(config: dict):
     save_latest_at = 0
