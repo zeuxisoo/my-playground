@@ -45,7 +45,7 @@ class Entities:
 
     def get_inventory_id(self) -> str:
         for entity in self.entities:
-            if entity['Type'] == 4:
+            if entity['Type'] == Entity.Player.value:
                 return entity['InventoryId']
 
         raise RuntimeError('Cannot find inventory id')
