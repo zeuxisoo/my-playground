@@ -38,26 +38,26 @@ def get_latest_save_file(config: dict):
 
     return save_latest_file
 
-class Inventory:
+class Entities:
     def __init__(self, save_object: dict):
         self.save_object = save_object
         self.entities = self.save_object['Entities']
 
-    def get_id(self) -> str:
+    def get_inventory_id(self) -> str:
         for entity in self.entities:
             if entity['Type'] == 4:
                 return entity['InventoryId']
 
         raise RuntimeError('Cannot find inventory id')
 
-    def get_object(self, id: str) -> dict:
+    def get_inventory(self, id: str) -> dict:
         for entity in self.entities:
             if entity['Type'] == Entity.Inventory.value and entity['ID'] == id:
                 return entity
 
         raise RuntimeError('Cannot find inventory data')
 
-    def get_regular_slots(self, inventory_object: dict) -> list:
+    def get_inventory_regular_slots(self, inventory_object: dict) -> list:
         return inventory_object['RegularSlots']
 
 def run(config: dict):
@@ -72,10 +72,10 @@ def run(config: dict):
     save_content = open(config['save_full_path']).read()
     save_object = json.loads(save_content)
 
-    inventory = Inventory(save_object)
-    inventory_id = inventory.get_id()
-    inventory_object = inventory.get_object(inventory_id)
-    inventory_regular_slots = inventory.get_regular_slots(inventory_object)
+    entities = Entities(save_object)
+    inventory_id = entities.get_inventory_id()
+    inventory_object = entities.get_inventory(inventory_id)
+    inventory_regular_slots = entities.get_inventory_regular_slots(inventory_object)
 
     for slot in inventory_regular_slots:
         if 'ItemWithProperties' in slot:
