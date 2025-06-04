@@ -4,7 +4,7 @@ import argparse
 import json
 import os
 from datetime import datetime, timedelta
-from kind import Quality
+from kind import Quality, Entity
 
 def get_latest_save_file(config: dict):
     save_latest_at = 0
@@ -52,7 +52,7 @@ class Inventory:
 
     def get_object(self, id: str) -> dict:
         for entity in self.entities:
-            if entity['Type'] == 5 and entity['ID'] == id:
+            if entity['Type'] == Entity.Inventory.value and entity['ID'] == id:
                 return entity
 
         raise RuntimeError('Cannot find inventory data')
