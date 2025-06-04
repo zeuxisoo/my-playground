@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 
-from enum import Enum, auto
+from enum import Enum
 
-Quality = Enum('Quality', [
-    ('Normal', 0),
-    ('Good', 1),
-    ('Better', 2),
-    ('Best', 3),
-])
+Quality = Enum('Quality', 'Normal Good Better Best', start=0)
 
 Tool = Enum('Tool', {
     'None': 0, # Tool['None']
@@ -26,61 +21,62 @@ Tool = Enum('Tool', {
 	'Torch': 1300,
 })
 
-class Entity(Enum):
-    Plant = 0
-    Tree = auto()
-    Resource = auto()
-    MagneticItem = auto()
-    Player = auto()
-    Inventory = auto()
-    SeedInventory = auto()
-    Currency = auto()
-    ShippingBin = auto()
-    NPC = auto()
-    Weather = auto()
-    Animal = auto()
-    AnimalHerd = auto()
-    GrassStarter = auto()
-    Bed = auto()
-    WildPlantPatch = auto()
-    IrrigationPump = auto()
-    PachaStatue = auto()
-    Nanny = auto()
-    Idea = auto()
-    Building = auto()
-    TallGrass = auto()
-    PickableItem = auto()
-    TileableDecoration = auto()
-    FenceDoor = auto()
-    WaterWell = auto()
-    Decoration = auto()
-    BeeHive = auto()
-    RacingLeague = auto()
-    ReflectionStatue = auto()
-    FirePit = auto()
-    Score = auto()
-    ManualProducer = auto()
-    AutoProducer = auto()
-    StorageBox = auto()
-    Dashboard = auto()
-    SchoolWorkshop = auto()
-    PlantNursery = auto()
-    FollowingPetData = auto()
-    QuestManager = auto()
-    Calendar = auto()
-    IrrigationTrench = auto()
-    IrrigationExtender = auto()
-    TotemOffering = auto()
-    CaveRoom = auto()
-    CaveTorch = auto()
-    CavePaint = auto()
-    Trading = auto()
-    LimitedStockShop = auto()
-    MainStory = auto()
-    UniqueDataManager = auto()
-    Fence = auto()
-    ProsperityObjects = auto()
-    Butcher = auto()
-    TrapSpot = auto()
-    ItemGrower = auto()
-    Olla = auto()
+Entity = Enum('Entity', [
+    'Plant',
+    'Tree',
+    'Resource',
+    'MagneticItem',
+    'Player',
+    'Inventory',
+    'SeedInventory',
+    'Currency',
+    'ShippingBin',
+    'NPC',
+    'Weather',
+    'Animal',
+    'AnimalHerd',
+    'GrassStarter',
+    'Bed',
+    'WildPlantPatch',
+    'IrrigationPump',
+    'PachaStatue',
+    'Nanny',
+    'Idea',
+    'Building',
+    'TallGrass',
+    'PickableItem',
+    'TileableDecoration',
+    'FenceDoor',
+    'WaterWell',
+    'Decoration',
+    'BeeHive',
+    'RacingLeague',
+    'ReflectionStatue',
+    'FirePit',
+    'Score',
+    'ManualProducer',
+    'AutoProducer',
+    'StorageBox',
+    'Dashboard',
+    'SchoolWorkshop',
+    'PlantNursery',
+    'FollowingPetData',
+    'QuestManager',
+    'Calendar',
+    'IrrigationTrench',
+    'IrrigationExtender',
+    'TotemOffering',
+    'CaveRoom',
+    'CaveTorch',
+    'CavePaint',
+    'Trading',
+    'LimitedStockShop',
+    'MainStory',
+    'UniqueDataManager',
+    'Fence',
+    'ProsperityObjects',
+    'Butcher',
+    'TrapSpot',
+    'ItemGrower',
+    'Olla',
+], start=0)
