@@ -60,6 +60,17 @@ class Entities:
     def get_inventory_regular_slots(self, inventory_object: dict) -> list:
         return inventory_object['RegularSlots']
 
+    def get_storage_boxes(self) -> list:
+        # storage_boxes = []
+        # for entity in self.entities:
+        #     if entity['Type'] == Entity.StorageBox.value:
+        #         storage_boxes.append(entity)
+        # return storage_boxes
+        return list(filter(lambda entity: entity['Type'] == Entity.StorageBox.value, self.entities))
+
+    def get_storage_box_slots(self, storage_box: dict) -> list:
+        return storage_box['Slots']
+
 def run(config: dict):
     config['save_full_path'] = os.path.join(
         config['save_path'],
@@ -73,14 +84,22 @@ def run(config: dict):
     save_object = json.loads(save_content)
 
     entities = Entities(save_object)
-    inventory_id = entities.get_inventory_id()
-    inventory_object = entities.get_inventory(inventory_id)
-    inventory_regular_slots = entities.get_inventory_regular_slots(inventory_object)
 
+    inventory_id = entities.get_inventory_id()
+    inventory = entities.get_inventory(inventory_id)
+    inventory_regular_slots = entities.get_inventory_regular_slots(inventory)
     for slot in inventory_regular_slots:
         if 'ItemWithProperties' in slot:
             slot['ItemWithProperties']['Quality'] = config['inventory']['quality']
             slot['SyncedQ'] = config['inventory']['synced_q']
+
+    storage_boxes = entities.get_storage_boxes()
+    for storage_box in storage_boxes:
+        storage_box_slots = entities.get_storage_box_slots(storage_box)
+        for slot in storage_box_slots:
+            if 'ItemWithProperties' in slot:
+                slot['ItemWithProperties']['Quality'] = config['inventory']['quality']
+                slot['SyncedQ'] = config['inventory']['synced_q']
 
     with open(config['save_full_path'], 'w+') as f:
         f.write(json.dumps(save_object))
